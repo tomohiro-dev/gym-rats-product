@@ -1,12 +1,13 @@
 <template>
-  <!-- ユーザーページ -->
   <div>
     <div>
-      <!-- ケバブケース使う -->
       <the-header />
-      <p>test</p>
+      <p>You must be login.</p>
       <!-- <p>{{ user.email }}</p> -->
     </div>
+    <router-link to="index">
+      <v-btn class="hidden-sm-only">LOGIN</v-btn>
+    </router-link>
   </div>
 </template>
 

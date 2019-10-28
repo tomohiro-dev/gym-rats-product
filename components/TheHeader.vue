@@ -1,14 +1,15 @@
 <template>
-  <div class="header-fixed">
+  <div>
     <div>
-      <img src="~assets/gymratslogo.png" alt width="350" height="130" display:flex />
+      <img src="~assets/gymratslogo.png" alt width="350" height="140" />
     </div>
-    <div>
-      <h1>
-        Make time for workout
-        <br />with partners
+    <v-row justify="center">
+      <h1 class="display-2">
+        Make time for
+        <br />WORKOUT
+        <p class="font-weight-black">with Partners</p>
       </h1>
-    </div>
+    </v-row>
   </div>
 </template>
 
