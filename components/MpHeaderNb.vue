@@ -16,7 +16,8 @@
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
-            <img src="/avatar-1.png" alt />
+            <img src alt />
+            <!-- 写真追加する -->
           </v-avatar>
           <p class="white--text subheading mt-1">GYM-RATS-</p>
         </v-flex>
@@ -41,7 +42,7 @@ export default {
     return {
       drawer: false, //trueにしたら最初から映ったまま
       links: [
-        { icon: 'account_balance', text: 'Home', route: '/' },
+        { icon: 'account_balance', text: 'Home', route: '/home' },
 
         { icon: 'dashboard', text: 'Dashboard', route: '/dashboard' },
         { icon: 'account_box', text: 'My Profile', route: '/profile' },

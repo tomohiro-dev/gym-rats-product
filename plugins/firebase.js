@@ -16,7 +16,7 @@ export default firebaseApp
 //firebaseとやり取りする準備fin
 
 //インスタンス（物体）初期化
-//メッセージ送受信の準備
+//メッセージ送受信の準備,firestore使う準備
 export const db = firebaseApp.firestore()
 
 //firestoreのオブジェクト取得

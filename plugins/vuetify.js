@@ -6,6 +6,7 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css' // Ensure
 import VueTextareaAutosize from 'vue-textarea-autosize'
 
 Vue.use(Vuetify)
+Vue.use(VueTextareaAutosize)
 
 export default (ctx) => {
   const vuetify = new Vuetify({

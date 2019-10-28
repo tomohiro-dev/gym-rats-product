@@ -15,8 +15,9 @@
     "@nuxtjs/axios": "^5.3.6",
     "firebase": "^7.1.0",
     "nuxt": "^2.10.1",
-    "vuex-persistedstate": "^2.5.4",
-    "vuetify": "^2.0.0"
+    "vue-textarea-autosize": "^1.1.1",
+    "vuetify": "^2.0.0",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@mdi/font": "^4.5.95",
