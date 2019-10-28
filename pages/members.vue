@@ -39,27 +39,27 @@ export default {
       team: [
         {
           name: 'KOTARO',
-          intro: '',
+          intro: '結構走ってます！',
           avatar: ''
         },
         {
           name: 'ABI',
-          intro: 'ガジェット大好き',
+          intro: 'ガジェット大好きっ！^^',
           avatar: ''
         },
         {
-          name: 'SHIMADA',
-          intro: 'SSA',
+          name: 'TSURU-D',
+          intro: 'ラガーマンエンジニア',
           avatar: ''
         },
         {
-          name: 'MAKIYO',
-          intro: 'キャリア',
+          name: 'SHIMO-D',
+          intro: '最近運動不足。。',
           avatar: ''
         },
         {
           name: 'TOMO',
-          intro: '世界を変えるGEEKになっている',
+          intro: '',
           avatar: ''
         }
       ]

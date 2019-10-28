@@ -1,7 +1,9 @@
 <template>
   <v-app>
+    <!-- 直近の日程を表示させたい！！ -->
     <mp-header-nb />
-    <div>My Profile</div>
+    <div>Dashboard page</div>
+    <div>直近の日程を表示させたい！！</div>
   </v-app>
 </template>
 

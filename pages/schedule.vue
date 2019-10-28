@@ -126,7 +126,9 @@
 
 <script>
 import MpHeaderNb from '~/components/MpHeaderNb.vue'
+import firebase from '~/plugins/firebase'
 import { db } from '~/plugins/firebase'
+import { async } from 'q'
 
 export default {
   components: {
@@ -193,19 +195,30 @@ export default {
   mounted() {
     this.getEvents()
   },
+  //To あびさん ↓このあたりのエラーである可能性はとても高いのですが、中々うまく行きません。
+  //https://qiita.com/yusukeito58/items/d941cb0ab333647b85e1
+  //↑中身はangularなのですが、おそらくこんな感じで解決はできそうなんです。。
   methods: {
     async getEvents() {
-      let snapshot = await db.collection('calEvent').get()
-      let events = []
-      snapshot.forEach((doc) => {
-        // console.log(doc.data())
-        let appData = doc.data()
-        appData.id = doc.id
-        events.push(appData)
+      firebase.auth().onAuthStateChanged(async (user) => {
+        const currentUserId = user.uid
+        let snapshot = await db
+          .collection('calEvent')
+          .where('createdUser', '==', currentUserId)
+          .get()
+        console.log(snapshot)
+        let events = []
+        snapshot.forEach((doc) => {
+          // console.log(doc.data())
+          let appData = doc.data()
+          appData.id = doc.id
+          events.push(appData)
+        })
+        this.events = events
       })
-      this.events = events
     },
     //イベントの追加！
+    //IDを追加して、取得するように設定すればOK
     async addEvent() {
       if (this.name && this.start && this.end) {
         await db.collection('calEvent').add({
@@ -213,14 +226,16 @@ export default {
           details: this.details,
           start: this.start,
           end: this.end,
-          color: this.color
+          color: this.color,
+          createdUser: this.createdUser
         })
         this.getEvents()
         ;(this.name = ''),
           (this.details = ''),
           (this.start = ''),
           (this.end = ''),
-          (this.color = '#1976D2')
+          (this.color = '#1976D2'),
+          (this.createdUser = '')
       } else {
         alert('Name, start and end date are required')
       }

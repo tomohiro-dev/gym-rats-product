@@ -31,28 +31,58 @@
             <v-list-item-title class="white--text">{{link.text}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        <div class="logoutbtn">
+          <v-btn v-on:click="logout">
+            <v-icon>exit_to_app</v-icon>
+            <span>SIGNOUT</span>
+          </v-btn>
+        </div>
       </v-list>
     </v-navigation-drawer>
   </nav>
 </template>
 
 <script>
+import firebase from '~/plugins/firebase'
+import { mapActions } from 'vuex'
+
 export default {
   data() {
     return {
       drawer: false, //trueにしたら最初から映ったまま
       links: [
         { icon: 'account_balance', text: 'Home', route: '/home' },
-
         { icon: 'dashboard', text: 'Dashboard', route: '/dashboard' },
         { icon: 'account_box', text: 'My Profile', route: '/profile' },
         { icon: 'calendar_today', text: 'Schedule', route: '/schedule' },
         // { icon: 'folder', text: 'My Projects', route: '/projects' }, //ぶっちゃけこれいらないかも
-        { icon: 'group', text: 'Members', route: '/members' },
-        { icon: 'exit_to_app', text: 'SIGNOUT', route: '/' } //v-on clickでボタンとして埋め込めばいいのかも。
+        { icon: 'group', text: 'Members', route: '/members' }
+        // { icon: 'exit_to_app', text: 'SIGNOUT', route: '/' } //v-on clickでボタンとして埋め込めばいいのかも。
       ],
       snackbar: false
+    }
+  },
+  methods: {
+    //ログアウト
+    ...mapActions(['setUser']),
+    logout() {
+      firebase
+        .auth()
+        .signOut()
+        .then((user) => {
+          this.$router.push('/')
+        })
+        .catch((error) => {
+          alert(error)
+        })
     }
   }
 }
 </script>
+
+
+<style>
+.logoutbtn {
+  text-align: center;
+}
+</style>

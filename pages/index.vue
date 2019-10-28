@@ -1,16 +1,7 @@
 <template>
   <v-app class="orange lighten-4">
     <the-header />
-    <!-- ログイン中に表示される画面 -->
-    <div v-if="isAuthenticated">
-      <!-- {{ user.email }}でログイン中です -->
-      <br />
-      <button v-on:click="logout">ログアウト</button>
-      <br />
-      <!-- <a href="/member-page">メンバーページへ</a> -->
-      <router-link to="home">home</router-link>
-    </div>
-    <!-- ログイン中に表示される画面 fin -->
+    <div v-if="isAuthenticated"></div>
 
     <div v-else>
       <v-card-text>
@@ -32,14 +23,20 @@
 
     <!-- Sign up -->
     <v-card-text>
-      <v-text-field label="Signup" name="signUp" prepend-icon="person" type="text" v-model="email"></v-text-field>
       <v-text-field
-        id="password"
-        label="Password"
-        name="password"
+        label="Signup"
+        name="signUp"
+        prepend-icon="person"
+        type="text"
+        v-model="signUpemail"
+      ></v-text-field>
+      <v-text-field
+        id="signUppassword"
+        label="signUpPassword"
+        name="signUppassword"
         prepend-icon="lock"
         type="password"
-        v-model="password"
+        v-model="signUppassword"
       ></v-text-field>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -66,7 +63,9 @@ export default {
   data() {
     return {
       email: '',
-      password: ''
+      password: '',
+      signUpemail: '',
+      signUppassword: ''
     }
   },
   computed: {
@@ -82,11 +81,16 @@ export default {
     //ログイン・ログアウト
     ...mapActions(['setUser']),
     login() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        console.log(user)
+      })
+
       firebase
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((user) => {
           // ログインしたら飛ぶページを指定
+          console.log(user)
           this.$router.push('/home')
         })
         .catch((error) => {
@@ -109,9 +113,9 @@ export default {
     signUp: function() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
+        .createUserWithEmailAndPassword(this.signUpemail, this.signUppassword)
         .then((user) => {
-          alert('登録が完了しました', user.email)
+          alert('登録が完了しました', user.signUpemail)
           // ログインしたら飛ぶページを指定
           this.$router.push('/home')
         })
