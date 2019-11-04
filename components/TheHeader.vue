@@ -1,10 +1,11 @@
 <template>
   <div>
+    <!-- このあたり全体的に小さくする -->
     <div>
-      <img src="~assets/gymratslogo.png" alt width="350" height="140" />
+      <img src="~assets/gymratslogo.png" alt width="360" height="170" />
     </div>
     <v-row justify="center">
-      <h1 class="display-2">
+      <h1 class="display-1">
         Make time for
         <br />WORKOUT
         <p class="font-weight-black">with Partners</p>

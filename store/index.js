@@ -1,5 +1,4 @@
 //ユーザー認証を保存するための準備
-
 export const strict = false
 
 export const state = () => ({

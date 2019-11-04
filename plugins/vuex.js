@@ -1,4 +1,5 @@
 import { mapState } from 'vuex'
+import { store } from '/store/meetup'
 
 export default {
   computed: {

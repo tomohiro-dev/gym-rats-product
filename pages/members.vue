@@ -1,6 +1,9 @@
 <template>
   <v-app>
     <mp-header-nb />
+
+    <h1 class="subheading grey--text">MEMBERS</h1>
+
     <v-container class="my-5">
       <v-layout row wrap>
         <v-flex xs12 sm16 md4 lg3 v-for="person in team" :key="person.name">
@@ -11,7 +14,7 @@
               </v-avatar>
             </v-responsive>
             <v-card-text>
-              <div class="subheading">{{person.name}}</div>
+              <div class="subheading" @click="link">{{person.name}}</div>
               <div class="grey--text">{{person.intro}}</div>
             </v-card-text>
             <v-card-actions>
@@ -40,29 +43,34 @@ export default {
         {
           name: 'KOTARO',
           intro: '結構走ってます！',
-          avatar: ''
+          avatar: require('@/assets/profile/kotaro.png')
         },
         {
           name: 'ABI',
           intro: 'ガジェット大好きっ！^^',
-          avatar: ''
+          avatar: require('@/assets/profile/abisan.png')
         },
         {
           name: 'TSURU-D',
           intro: 'ラガーマンエンジニア',
-          avatar: ''
+          avatar: require('@/assets/profile/tsuruchan.png')
         },
         {
           name: 'SHIMO-D',
           intro: '最近運動不足。。',
-          avatar: ''
-        },
-        {
-          name: 'TOMO',
-          intro: '',
-          avatar: ''
+          avatar: require('@/assets/profile/shimod.png')
         }
+        // {
+        //   name: 'TOMO',
+        //   intro: '',
+        //   avatar: ''
+        // }
       ]
+    }
+  },
+  methods: {
+    link() {
+      this.$router.push('/mbprofile')
     }
   }
 }

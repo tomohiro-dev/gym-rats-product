@@ -32,7 +32,7 @@
       ></v-text-field>
       <v-text-field
         id="signUppassword"
-        label="signUpPassword"
+        label="Password"
         name="signUppassword"
         prepend-icon="lock"
         type="password"

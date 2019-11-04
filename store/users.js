@@ -1,5 +1,3 @@
-//編集が必要！！
-
 export const state = () => ({
   users: []
 })

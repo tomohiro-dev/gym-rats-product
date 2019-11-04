@@ -16,10 +16,10 @@
       <v-layout column align-center>
         <v-flex class="mt-5">
           <v-avatar size="100">
-            <img src alt />
+            <img src="@/assets/profile/tomo.png" alt />
             <!-- 写真追加する -->
           </v-avatar>
-          <p class="white--text subheading mt-1">GYM-RATS-</p>
+          <p class="white--text subheading mt-4">GYM-RATS-</p>
         </v-flex>
       </v-layout>
       <v-list>
@@ -51,13 +51,11 @@ export default {
     return {
       drawer: false, //trueにしたら最初から映ったまま
       links: [
-        { icon: 'account_balance', text: 'Home', route: '/home' },
-        { icon: 'dashboard', text: 'Dashboard', route: '/dashboard' },
-        { icon: 'account_box', text: 'My Profile', route: '/profile' },
-        { icon: 'calendar_today', text: 'Schedule', route: '/schedule' },
-        // { icon: 'folder', text: 'My Projects', route: '/projects' }, //ぶっちゃけこれいらないかも
-        { icon: 'group', text: 'Members', route: '/members' }
-        // { icon: 'exit_to_app', text: 'SIGNOUT', route: '/' } //v-on clickでボタンとして埋め込めばいいのかも。
+        { icon: 'account_balance', text: 'HOME', route: '/home' },
+        { icon: 'dashboard', text: 'DASHBOARD', route: '/dashboard' },
+        { icon: 'account_box', text: 'MY PROFILE', route: '/profile' },
+        { icon: 'calendar_today', text: 'SCHEDULE', route: '/schedule' },
+        { icon: 'group', text: 'MEMBERS', route: '/members' }
       ],
       snackbar: false
     }

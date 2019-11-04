@@ -3,13 +3,12 @@
     <!-- build a calendar! -->
     <mp-header-nb />
     <!-- <div>schedule Page</div> -->
-
     <v-row class="fill-height">
       <v-col>
         <v-sheet height="64">
           <v-toolbar flat color="white">
             <!-- <v-btn outlined class="mr-4" @click="setToday">Today</v-btn> ボタン消しとく！ -->
-            <v-btn class="mx-2" fab small color="primary" @click="dialog = true" dark>
+            <v-btn class="mx-2" fab small color="orange" @click="dialog = true" dark>
               <v-icon>add_box</v-icon>
             </v-btn>
             <v-btn fab text small @click="prev">
@@ -107,6 +106,7 @@
                   ></textarea-autosize>
                 </form>
               </v-card-text>
+
               <v-card-actions>
                 <v-btn text color="secondary" @click="selectedOpen = false">Close</v-btn>
                 <v-btn
@@ -150,6 +150,7 @@ export default {
     end: null,
     color: '#1976D2',
     currentlyEditing: null,
+    createdUser: 'ByVMb0z1xch781Vz7Xu35BJIrcy2',
     selectedEvent: {},
     selectedElement: null,
     selectedOpen: false,
@@ -162,7 +163,6 @@ export default {
       if (!start || !end) {
         return ''
       }
-
       const startYear = start.year
       const endYear = end.year
       const suffixYear = startYear === endYear ? '' : endYear
@@ -173,7 +173,6 @@ export default {
 
       const startDay = start.day + this.nth(start.day)
       const endDay = end.day + this.nth(end.day)
-
       switch (this.type) {
         case 'month':
           return ` ${startYear} ${startMonth}`
@@ -195,16 +194,13 @@ export default {
   mounted() {
     this.getEvents()
   },
-  //To あびさん ↓このあたりのエラーである可能性はとても高いのですが、中々うまく行きません。
-  //https://qiita.com/yusukeito58/items/d941cb0ab333647b85e1
-  //↑中身はangularなのですが、おそらくこんな感じで解決はできそうなんです。。
   methods: {
     async getEvents() {
       firebase.auth().onAuthStateChanged(async (user) => {
         const currentUserId = user.uid
         let snapshot = await db
           .collection('calEvent')
-          .where('createdUser', '==', currentUserId)
+          .where('createdUser', '==', user.uid)
           .get()
         console.log(snapshot)
         let events = []
@@ -235,12 +231,11 @@ export default {
           (this.start = ''),
           (this.end = ''),
           (this.color = '#1976D2'),
-          (this.createdUser = '')
+          (this.createdUser = 'ByVMb0z1xch781Vz7Xu35BJIrcy2')
       } else {
         alert('Name, start and end date are required')
       }
     },
-
     //update eventはここから
     async updateEvent(ev) {
       await db
@@ -258,11 +253,9 @@ export default {
         .collection('calEvent')
         .doc(ev)
         .delete()
-
       this.selectedOpen = false
       this.getEvents()
     },
-
     viewDay({ date }) {
       this.focus = date
       this.type = 'day'
@@ -289,14 +282,12 @@ export default {
         this.selectedElement = nativeEvent.target
         setTimeout(() => (this.selectedOpen = true), 10)
       }
-
       if (this.selectedOpen) {
         this.selectedOpen = false
         setTimeout(open, 10)
       } else {
         open()
       }
-
       nativeEvent.stopPropagation()
     },
     updateRange({ start, end }) {
@@ -309,7 +300,6 @@ export default {
         ? 'th'
         : ['th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th'][d % 10]
     },
-
     getEventColor(ev) {
       return ev.color
     }
