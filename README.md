@@ -1,7 +1,5 @@
 # gym-rats-
 
-> My doozie Nuxt.js project
-
 ## Build Setup
 
 ``` bash
