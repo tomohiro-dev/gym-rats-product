@@ -19,7 +19,8 @@ Login:test@test.com
 
 Pass:testtest
 
-This app is built on a smartphone screen.(Galaxy S8 : 5.8 inch)
+This app is built on a smartphone screen. (Galaxy S8 : 5.8 inch)
+Please adjust the screen, if you try testing.
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
 
