@@ -1,5 +1,3 @@
-# gym-rats-
-
 ## Build Setup
 
 ``` bash
