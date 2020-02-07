@@ -23,5 +23,6 @@ This app is built on a smartphone screen. (Galaxy S8 : 5.8 inch)
 Please adjust the screen, if you try testing at your PC.
 
 For detailed explanation on how things work, check out below.
+↓
 [Nuxt.js docs](https://nuxtjs.org).
 
