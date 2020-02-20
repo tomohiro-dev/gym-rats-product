@@ -24,4 +24,5 @@ Please adjust the screen, if you try testing at your PC.
 
 For detailed explanation on how things work, check out.
 [Nuxt.js docs](https://nuxtjs.org).
+[Vuetify docs](https://vuetifyjs.com/ja/).
 
