@@ -16,8 +16,8 @@ $ npm run generate
 ```
 
 This project is closed.
-~~ Login:test@test.com ~~
-~~ Pass:testtest ~~
+~~Login:test@test.com ~~
+~~Pass:testtest~~
 
 This app is built on a smartphone screen. (Galaxy S8 : 5.8 inch)
 Please adjust the screen, if you try testing at your PC.
